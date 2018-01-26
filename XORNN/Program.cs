@@ -14,7 +14,7 @@ namespace XORNN
 			nn.InitializeWeights();
 			List<double[]> trainigSet = new List<double[]>();
 			List<double[]> desiredResults = new List<double[]>();
-			Random r = new Random(10);
+			Random r = new Random(1);
 			/*for (int i = 0; i < 1000; i++)
 			{
 				trainigSet.Add(new double[] { (r.Next()%2 ), r.Next()%2  });
@@ -105,7 +105,7 @@ namespace XORNN
 
 		public int N3 { get; set; }
 
-		Random random = new Random();
+		Random random = new Random(1);
 
 		public NeuralNetwork(int inputCount, int hiddenCount, int outputCount, double learningRate)
 		{

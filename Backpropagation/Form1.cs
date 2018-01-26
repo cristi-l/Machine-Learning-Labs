@@ -15,13 +15,11 @@ namespace Backpropagation
 {
 	public partial class Form1 : Form
 	{
-
-		int formulaDistanta = 1;
 		Pen pen, linePen;
 		Graphics graphics;
 		Random random;
 		Punct[] puncte;
-		Color[] colors = { Color.Red, Color.Blue, Color.Lime, Color.Purple, Color.Magenta, Color.Yellow, Color.Turquoise, Color.Navy, Color.Orange, Color.Maroon };
+		Color[] colors = { Color.Red, Color.Blue, Color.Lime, Color.Purple, Color.Magenta, Color.Yellow, Color.Turquoise, Color.Navy, Color.Orange, Color.Maroon,Color.AliceBlue,Color.AntiqueWhite };
 		NeuralNetwork nn;
 		public Form1()
 		{
@@ -29,9 +27,9 @@ namespace Backpropagation
 			pen = new Pen(Color.Black, 1);
 			graphics = panel1.CreateGraphics();
 			graphics.TranslateTransform(400, 400);
-			random = new Random();
+			random = new Random(1);
 			linePen = new Pen(Color.Black);
-			nn = new NeuralNetwork(2, 7, 10, 0.01);
+			nn = new NeuralNetwork(2, 8, 10, 0.002);
 			nn.InitializeWeights();
 		}
 
@@ -59,7 +57,7 @@ namespace Backpropagation
 		{
 			using (var sr = new System.IO.StreamReader(openFileDialog1.FileName))
 			{
-				String line = sr.ReadLine();
+				string line = sr.ReadLine();
 				int n = 0;
 				if (int.TryParse(line, out n))
 				{
@@ -113,10 +111,10 @@ namespace Backpropagation
 				if (punct.zona != maxPos)
 				{
 					target[punct.zona] = 1;
-
+					nn.BackPropagation(target);
 					error++;
 				}
-				nn.BackPropagation(target);
+				
 				punct.c = colors[maxPos];
 
 			}
