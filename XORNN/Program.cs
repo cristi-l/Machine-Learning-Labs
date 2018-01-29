@@ -126,14 +126,14 @@ namespace XORNN
 		{
 			for (int i = 0; i < N2; i++)
 				for (int j = 0; j < N1; j++)
-					W12[i, j] = random.NextDouble();
+					W12[i, j] = random.NextDouble()/1000.0;
 			for (int i = 0; i < N3; i++)
 				for (int j = 0; j < N2; j++)
-					W23[i, j] = random.NextDouble();
+					W23[i, j] = random.NextDouble() / 1000.0;
 			for (int i = 0; i < N2; i++)
-				bias2[i] = random.NextDouble();
+				bias2[i] = random.NextDouble() / 1000.0;
 			for (int i = 0; i < N3; i++)
-				bias3[i] = random.NextDouble();
+				bias3[i] = random.NextDouble() / 1000.0;
 		}
 		public double[] FeedForward(double[] input, double[] desiredOut = null)
 		{
